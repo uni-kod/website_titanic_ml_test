@@ -1,7 +1,11 @@
-from django.templatetags.static import static
+# from django.templatetags.static import static
 
+# ML_MODEL_FILE = static('machine_learning/titanic_model.sav')
 
-ML_MODEL_FILE = static('machine_learning/titanic_model.sav')
+import os
+from django.conf import settings
+
+ML_MODEL_FILE = os.path.join(settings.STATIC_ROOT, 'machine_learning/titanic_model.sav')
 
 
 def prediction_model(pclass, sex, age, sibsp, parch, fare, embarked, title):
