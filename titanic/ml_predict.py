@@ -1,10 +1,13 @@
-OUTPUT_MODEL_FILE='/home/lap_3/Documents/work/courses/full_stack/python_ai_django//my_code/section_11/lecture_287/titanic_model.sav'
+from django.templatetags.static import static
+
+
+ML_MODEL_FILE = static('machine_learning/titanic_model.sav')
 
 
 def prediction_model(pclass, sex, age, sibsp, parch, fare, embarked, title):
   import pickle
   x = [[pclass, sex, age, sibsp, parch, fare, embarked, title]]
-  random_forest = pickle.load(open(OUTPUT_MODEL_FILE, 'rb'))
+  random_forest = pickle.load(open(ML_MODEL_FILE, 'rb'))
   prediction = random_forest.predict(x)
 
   if prediction == 0:
